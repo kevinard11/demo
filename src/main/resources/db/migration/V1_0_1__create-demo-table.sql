@@ -3,7 +3,7 @@ create table demo(
     id          bigserial,
     demo_id     varchar,
     demo_name   varchar(100),
-    desription  text,
+    description  text,
     level       int,
     active      boolean,
     version     int,
