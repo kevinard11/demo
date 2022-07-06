@@ -1,0 +1,3 @@
+logging:
+  pattern:
+    console: '%d{dd-MM-yyyy HH:mm:ss.SSS} [%-5level] [%-25thread] [%-36X{correlationId}] [%C{0}@%L]: %msg%n'
