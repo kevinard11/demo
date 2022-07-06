@@ -1,5 +1,15 @@
 version: "3.3"
 services:
+
+  postgres:
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: demo
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+
   demo:
     build:
       context: .
@@ -7,4 +17,6 @@ services:
       - "8080:8080"
     environment:
       JAVA_OPTS: -DXmxlg
-      SPRING_PROFILES_ACTIVE: local
+      SPRING_PROFILES_ACTIVE: dev
+    depends_on:
+      - postgres
