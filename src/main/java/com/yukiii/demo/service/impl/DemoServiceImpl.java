@@ -9,4 +9,14 @@ import org.springframework.stereotype.Service;
 
 @Service("demoServiceImpl")
 public class DemoServiceImpl implements DemoService {
+
+    @Autowired
+    private DemoRepository repository;
+
+    @Override
+    public void createDemo(DemoCreateDto dto) {
+        var demo = DemoMapper.INSTANCE.createDtoToDemo(dto);
+        demo.setVersion(1);
+        repository.save(demo);
+    }
 }
