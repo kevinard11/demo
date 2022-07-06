@@ -8,3 +8,10 @@ springdoc:
     path: /api-docs
   swagger-ui:
     path: /swagger-ui.html
+
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    driverClassName: org.postgresql.Driver
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
