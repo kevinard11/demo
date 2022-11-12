@@ -22,7 +22,21 @@
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 		<lombok.mapstruct.version>0.2.0</lombok.mapstruct.version>
 		<org.projectlombok.version>1.18.22</org.projectlombok.version>
+		<spring.security.web.version>5.6.4</spring.security.web.version>
+		<redis.version>3.6.0</redis.version>
+		<spring.cloud.feign.version>3.1.4</spring.cloud.feign.version>
+		<log4j.log4j-bom.version>2.17.1</log4j.log4j-bom.version>
+		<commons-io.version>2.11.0</commons-io.version>
+		<vladmihalcea.hibernates-types-55.version>2.14.0</vladmihalcea.hibernates-types-55.version>
+		<shedlock-spring.version>4.33.0</shedlock-spring.version>
+		<shedlock-provider-redis.version>4.34.0</shedlock-provider-redis.version>
+		<io.jsonwerbtoken.jjwt.version>0.9.1</io.jsonwerbtoken.jjwt.version>
+		<auth0.java-jwt.version>3.19.1</auth0.java-jwt.version>
+		<commons-validator.version>1.7</commons-validator.version>
+        <commons-codec.version>1.15</commons-codec.version>
+		<junit-jupiter.version>5.8.2</junit-jupiter.version>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -33,11 +47,71 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>junit</groupId>
+					<artifactId>junit</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring.security.web.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-redis</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>io.lettuce</groupId>
+					<artifactId>lettuce-core</artifactId>
+				</exclusion>
+			</exclusions>
+        </dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+			<version>${spring.cloud.feign.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-hateoas</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>${redis.version}</version>
 		</dependency>
 
 		<dependency>
@@ -50,11 +124,6 @@
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>${springdoc-openapi.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 
 		<dependency>
@@ -86,6 +155,61 @@
 			<artifactId>lombok-mapstruct-binding</artifactId>
 			<version>${lombok.mapstruct.version}</version>
 			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>${commons-io.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.vladmihalcea</groupId>
+			<artifactId>hibernate-types-55</artifactId>
+			<version>${vladmihalcea.hibernates-types-55.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>net.javacrumbs.shedlock</groupId>
+			<artifactId>shedlock-spring</artifactId>
+			<version>${shedlock-spring.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>net.javacrumbs.shedlock</groupId>
+			<artifactId>shedlock-provider-redis-spring</artifactId>
+			<version>${shedlock-provider-redis.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>${io.jsonwerbtoken.jjwt.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.auth0</groupId>
+			<artifactId>java-jwt</artifactId>
+			<version>${auth0.java-jwt.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-validator</groupId>
+			<artifactId>commons-validator</artifactId>
+			<version>${commons-validator.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>${commons-codec.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<version>${junit-jupiter.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 

@@ -7,6 +7,7 @@ create table demo(
     level       int,
     active      boolean,
     version     int,
+    user_id     int,
     created_at  timestamp with time zone default current_timestamp,
     updated_at  timestamp with time zone,
     updated_by  varchar(100),

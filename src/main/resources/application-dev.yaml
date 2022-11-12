@@ -4,3 +4,21 @@ spring:
     driverClassName: org.postgresql.Driver
     username: demo
     password: demo
+  redis:
+    host: redis
+    port: 6379
+  rabbitmq:
+    host: rabbitmq
+    port: 5672
+  shedlock:
+    defaultLockAtMostFor: 20m
+    name: demo
+
+setting:
+  service:
+    internal:
+      name: Demo
+      key: dev-yuki
+  cron:
+    expression: '0 0 7 * * ?'
+    zone: 'GMT+7'

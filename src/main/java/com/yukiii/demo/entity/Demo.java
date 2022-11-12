@@ -1,5 +1,7 @@
 package com.yukiii.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.yukiii.demo.entity.base.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -8,7 +10,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "demo")
@@ -16,7 +18,9 @@ import java.time.LocalDateTime;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Demo {
+public class Demo extends BaseEntity implements Serializable {
+
+    private static final long serialVersionUID = 3859691211467058263L;
 
     @Id
     @SequenceGenerator(name =  "seq", sequenceName = "demo_sequence", initialValue = 1, allocationSize = 1)
@@ -42,17 +46,11 @@ public class Demo {
     @Column(name = "version")
     private int version;
 
-    @Column(name = "created_at")
-    @CreationTimestamp
-    private LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    @UpdateTimestamp
-    private LocalDateTime updatedAt;
-
     @Column(name = "updated_by")
     private String updatedBy;
 
-    @Column(name = "deleted_at")
-    private LocalDateTime deletedAt;
+    @JsonBackReference
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
