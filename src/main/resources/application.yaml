@@ -1,0 +1,54 @@
+logging:
+  pattern:
+    console: '%d{dd-MM-yyyy HH:mm:ss.SSS} [%-5level] [%-25thread] [%-36X{correlationId}] [%C{0}@%L]: %msg%n'
+
+springdoc:
+  version: '3.0'
+  api-docs:
+    path: /api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+
+spring:
+  main:
+    banner-mode: off
+  datasource:
+    url: ${SPRING_DATASOURCE_URL}
+    driverClassName: org.postgresql.Driver
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
+  redis:
+    host: ${SPRING_REDIS_HOST}
+    port: ${SPRING_REDIS_PORT}
+  rabbitmq:
+    host: ${SPRING_RABBITMQ_HOST}
+    port: ${SPRING_RABBITMQ_PORT}
+    username: guest
+    password: guest
+  shedlock:
+    defaultLockAtMostFor: ${SPRING_SHEDLOCK_DEFAULTLOCK}
+    name: ${SPRING_SHEDLOCK_NAME}
+  profile:
+    no-prod: "default,local,dev"
+
+setting:
+  cache:
+    default:
+      ttl-seconds: 60
+  cron:
+    expression: ${SETTING_CRON_EXPRESSION}
+    zone: ${SETTING_CRON_ZONE}
+  token:
+    jwt:
+      ttl-minutes: 5
+
+client:
+  demo:
+    url: http://localhost:8080
+
+connector:
+  demo:
+    send-data:
+      queue: demo.send-data
+      exchange: demo
+      routing-key: send-data
